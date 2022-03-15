@@ -28,8 +28,8 @@ const createDB = async () => {
 
 const createTables = async () => {
     const client = new Client ({
-        user: 'postgres',
-        password: '123qwe4r',
+        user: process.env.DB_USER,
+        password: process.env.DB_PASSWORD,
         database: process.env.DB_NAME,
     })
     await client.connect();

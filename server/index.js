@@ -1,11 +1,19 @@
 const express = require('express')
-const app = express()
+const bodyParser = require("body-parser");
+const path = require('path');
+const pino = require('express-pino-logger')();
+const app = express();
 const port = 3000
+require('./util/DB');
+
+app.use(pino);
+app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, '../build')))
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.sendFile(path.join(__dirname, '../build/index.html'));
 })
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`listening on port ${port}`)
 })
