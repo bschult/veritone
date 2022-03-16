@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const path = require('path');
 const pino = require('express-pino-logger')();
 const app = express();
-const port = 3000
+const port = 3001
 require('./util/DB');
 
 app.use(pino);
